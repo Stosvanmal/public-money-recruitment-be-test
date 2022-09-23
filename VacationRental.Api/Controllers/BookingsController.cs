@@ -1,6 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+using VacationRental.Api.Aplication.Dtos;
 using VacationRental.Api.Models;
 
 namespace VacationRental.Api.Controllers
@@ -9,12 +10,12 @@ namespace VacationRental.Api.Controllers
     [ApiController]
     public class BookingsController : ControllerBase
     {
-        private readonly IDictionary<int, RentalViewModel> _rentals;
-        private readonly IDictionary<int, BookingViewModel> _bookings;
+        private readonly IDictionary<int, RentalDto> _rentals;
+        private readonly IDictionary<int, BookingDto> _bookings;
 
         public BookingsController(
-            IDictionary<int, RentalViewModel> rentals,
-            IDictionary<int, BookingViewModel> bookings)
+            IDictionary<int, RentalDto> rentals,
+            IDictionary<int, BookingDto> bookings)
         {
             _rentals = rentals;
             _bookings = bookings;
@@ -22,7 +23,7 @@ namespace VacationRental.Api.Controllers
 
         [HttpGet]
         [Route("{bookingId:int}")]
-        public BookingViewModel Get(int bookingId)
+        public BookingDto Get(int bookingId)
         {
             if (!_bookings.ContainsKey(bookingId))
                 throw new ApplicationException("Booking not found");
@@ -31,7 +32,7 @@ namespace VacationRental.Api.Controllers
         }
 
         [HttpPost]
-        public ResourceIdViewModel Post(BookingBindingModel model)
+        public ResourceIdDto Post(BookingBindingModel model)
         {
             if (model.Nights <= 0)
                 throw new ApplicationException("Nigts must be positive");
@@ -56,9 +57,9 @@ namespace VacationRental.Api.Controllers
             }
 
 
-            var key = new ResourceIdViewModel { Id = _bookings.Keys.Count + 1 };
+            var key = new ResourceIdDto { Id = _bookings.Keys.Count + 1 };
 
-            _bookings.Add(key.Id, new BookingViewModel
+            _bookings.Add(key.Id, new BookingDto
             {
                 Id = key.Id,
                 Nights = model.Nights,
