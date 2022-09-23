@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using VacationRental.Api.Business.Models;
+﻿using System.Threading.Tasks;
+using VacationRental.Api.Business.Interfaces.Entities;
 
 namespace VacationRental.Api.Business.Interfaces
 {
     public interface IRentalRepository
     {
-        Task<int> CreateRental(IRentalModel rental);
+        Task<int> AddRental(IRental rental);
     }
 }

@@ -6,7 +6,7 @@ using VacationRental.Api.Aplication.Dtos;
 
 namespace VacationRental.Api.Aplication.Queries
 {
-    public class CalendarQuery:IRequest<CalendarDto>
+    public class CalendarQuery:IRequest<CalendarAppDto>
     {
         public CalendarQuery(int rentalId, DateTime start, int nights)
         {

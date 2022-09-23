@@ -2,8 +2,8 @@
 
 namespace VacationRental.Api.Aplication.Dtos
 {
-    public class ResourceIdDto: IResourceIdDto
+    public class PreparationTimesAppDto: IPreparationTimesAppDto
     {
-        public int Id { get; set; }
+        public int Unit { get; set; }
     }
 }

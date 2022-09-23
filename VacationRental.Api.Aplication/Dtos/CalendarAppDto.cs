@@ -3,9 +3,9 @@ using VacationRental.Api.Aplication.Interfaces.Dtos;
 
 namespace VacationRental.Api.Aplication.Dtos
 {
-    public class CalendarDto:ICalendarDto
+    public class CalendarAppDto:ICalendarAppDto
     {
         public int RentalId { get; set; }
-        public List<ICalendarDateDto> Dates { get; set; } = new List<ICalendarDateDto>();
+        public List<ICalendarDateAppDto> Dates { get; set; } = new List<ICalendarDateAppDto>();
     }
 }

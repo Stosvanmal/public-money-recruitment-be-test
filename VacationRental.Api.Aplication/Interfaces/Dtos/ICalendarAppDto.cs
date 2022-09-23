@@ -2,10 +2,10 @@
 
 namespace VacationRental.Api.Aplication.Interfaces.Dtos
 {
-    public interface ICalendarDto
+    public interface ICalendarAppDto
     {
        int RentalId { get; set; }
-       List<ICalendarDateDto> Dates { get; set; }
+       List<ICalendarDateAppDto> Dates { get; set; }
        
     }
 }

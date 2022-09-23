@@ -10,12 +10,12 @@ namespace VacationRental.Api.Controllers
     [ApiController]
     public class BookingsController : ControllerBase
     {
-        private readonly IDictionary<int, RentalDto> _rentals;
-        private readonly IDictionary<int, BookingDto> _bookings;
+        private readonly IDictionary<int, RentalAppDto> _rentals;
+        private readonly IDictionary<int, BookingAppDto> _bookings;
 
         public BookingsController(
-            IDictionary<int, RentalDto> rentals,
-            IDictionary<int, BookingDto> bookings)
+            IDictionary<int, RentalAppDto> rentals,
+            IDictionary<int, BookingAppDto> bookings)
         {
             _rentals = rentals;
             _bookings = bookings;
@@ -23,7 +23,7 @@ namespace VacationRental.Api.Controllers
 
         [HttpGet]
         [Route("{bookingId:int}")]
-        public BookingDto Get(int bookingId)
+        public BookingAppDto Get(int bookingId)
         {
             if (!_bookings.ContainsKey(bookingId))
                 throw new ApplicationException("Booking not found");
@@ -32,7 +32,7 @@ namespace VacationRental.Api.Controllers
         }
 
         [HttpPost]
-        public ResourceIdDto Post(BookingBindingModel model)
+        public ResourceIdAppDto Post(BookingBindingModel model)
         {
             if (model.Nights <= 0)
                 throw new ApplicationException("Nigts must be positive");
@@ -57,9 +57,9 @@ namespace VacationRental.Api.Controllers
             }
 
 
-            var key = new ResourceIdDto { Id = _bookings.Keys.Count + 1 };
+            var key = new ResourceIdAppDto { Id = _bookings.Keys.Count + 1 };
 
-            _bookings.Add(key.Id, new BookingDto
+            _bookings.Add(key.Id, new BookingAppDto
             {
                 Id = key.Id,
                 Nights = model.Nights,

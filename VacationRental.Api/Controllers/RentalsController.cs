@@ -12,10 +12,10 @@ namespace VacationRental.Api.Controllers
     [ApiController]
     public class RentalsController : ControllerBase
     {
-        private readonly IDictionary<int, RentalDto> _rentals;
+        private readonly IDictionary<int, RentalAppDto> _rentals;
         private readonly IMediator mediator;
 
-        public RentalsController(IDictionary<int, RentalDto> rentals,IMediator mediator)
+        public RentalsController(IDictionary<int, RentalAppDto> rentals,IMediator mediator)
         {
             _rentals = rentals;
             this.mediator = mediator;
@@ -23,7 +23,7 @@ namespace VacationRental.Api.Controllers
 
         [HttpGet]
         [Route("{rentalId:int}")]
-        public RentalDto Get(int rentalId)
+        public RentalAppDto Get(int rentalId)
         {
             if (!_rentals.ContainsKey(rentalId))
                 throw new ApplicationException("Rental not found");
@@ -32,7 +32,7 @@ namespace VacationRental.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ResourceIdDto> Post(CreateRentalCommand cmd)
+        public async Task<ResourceIdAppDto> Post(CreateRentalCommand cmd)
         {
             var result = await mediator.Send(cmd);
 

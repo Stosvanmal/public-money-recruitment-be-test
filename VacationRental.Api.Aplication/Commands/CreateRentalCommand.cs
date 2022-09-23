@@ -3,7 +3,7 @@ using VacationRental.Api.Aplication.Dtos;
 
 namespace VacationRental.Api.Aplication.Commands
 {
-    public class CreateRentalCommand:IRequest<ResourceIdDto>
+    public class CreateRentalCommand:IRequest<ResourceIdAppDto>
     {
         public CreateRentalCommand(int units, int preparationTimeInDays)
         {

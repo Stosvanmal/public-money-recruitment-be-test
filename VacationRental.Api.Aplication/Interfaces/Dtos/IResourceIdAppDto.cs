@@ -1,7 +1,7 @@
 ﻿namespace VacationRental.Api.Aplication.Interfaces.Dtos
 {
-    public interface IPreparationTimesDto
+    public interface IResourceIdAppDto
     {
-        int Unit { get; set; }
+        int Id { get; set; }
     }
 }

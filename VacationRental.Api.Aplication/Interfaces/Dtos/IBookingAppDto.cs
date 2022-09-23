@@ -2,11 +2,11 @@
 
 namespace VacationRental.Api.Aplication.Interfaces.Dtos
 {
-    public interface IBookingDto
+    public interface IBookingAppDto
     {
         int Id { get; set; }
         int RentalId { get; set; }
-        IRentalDto RentalDto { get; set; }
+        IRentalAppDto RentalDto { get; set; }
         DateTime Start { get; set; }
         int Nights { get; set; }
     }

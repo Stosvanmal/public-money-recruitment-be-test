@@ -19,7 +19,7 @@ namespace VacationRental.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<CalendarDto> Get(int rentalId, DateTime start, int nights)
+        public async Task<CalendarAppDto> Get(int rentalId, DateTime start, int nights)
         {
             
             var result = await mediator.Send(new CalendarQuery(rentalId, start, nights));

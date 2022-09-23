@@ -2,7 +2,7 @@
 
 namespace VacationRental.Api.Aplication.Dtos
 {
-    public class CalendarBookingDto: ICalendarBookingDto
+    public class CalendarBookingAppDto: ICalendarBookingAppDto
     {
         public int Id { get; set; }
         public int Unit { get; set; }

@@ -1,13 +1,13 @@
 ﻿using System;
-using VacationRental.Api.Aplication.Interfaces.Dtos;
+using VacationRental.Api.Business.Interfaces;
 
-namespace VacationRental.Api.Aplication.Dtos
+namespace VacationRental.Api.Business.Dtos
 {
-    public class BookingDto: IBookingDto
+    public class BookingDto
     {
         public int Id { get; set; }
         public int RentalId { get; set; }
-        public IRentalDto RentalDto { get; set; }
+        public RentalDto Rental { get; set; }
         public DateTime Start { get; set; }
         public int Nights { get; set; }
     }

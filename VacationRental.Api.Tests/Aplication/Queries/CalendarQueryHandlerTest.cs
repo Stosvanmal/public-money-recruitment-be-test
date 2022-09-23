@@ -5,6 +5,7 @@ using System.Threading;
 using VacationRental.Api.Aplication.Dtos;
 using VacationRental.Api.Aplication.Interfaces.Dtos;
 using VacationRental.Api.Aplication.Queries;
+using VacationRental.Api.Business.Dtos;
 using VacationRental.Api.Business.Entities;
 using VacationRental.Api.Infrastructure.Interfaces;
 using Xunit;
@@ -28,11 +29,11 @@ namespace VacationRental.Api.Tests.Aplication.Queries
             int nights = 5;
             CalendarQuery cmd = new CalendarQuery(rentalId, start, nights);
 
-            IList<Booking> lstBookings = new List<Booking>
+            IList<BookingDto> lstBookings = new List<BookingDto>
             {
-                new Booking{ Id = 1, Nights = 3, Start = start.AddDays(2),  Rental  = new Rental{ Id = 1, Units= 2, PreparationTimeInDays= 1 } },
-                new Booking{ Id = 2, Nights = 5, Start = start.AddDays(10), Rental  = new Rental{ Id = 2, Units= 2, PreparationTimeInDays= 1 } },
-                new Booking{ Id = 3, Nights = 2, Start = start.AddDays(1), Rental  = new Rental { Id = 1, Units= 2, PreparationTimeInDays= 2 } },
+                new BookingDto{ Id = 1, Nights = 3, Start = start.AddDays(2),  Rental  = new RentalDto{ Id = 1, Units= 2, PreparationTimeInDays= 1 } },
+                new BookingDto{ Id = 2, Nights = 5, Start = start.AddDays(10), Rental  = new RentalDto{ Id = 2, Units= 2, PreparationTimeInDays= 1 } },
+                new BookingDto{ Id = 3, Nights = 2, Start = start.AddDays(1), Rental  = new RentalDto { Id = 1, Units= 2, PreparationTimeInDays= 2 } },
             };
 
             calendarRepositoryAppMock.Setup(x => x.GetCalendar(It.IsAny<int>(), It.IsAny<DateTime>(), It.IsAny<int>())).ReturnsAsync(lstBookings);
